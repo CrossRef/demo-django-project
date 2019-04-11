@@ -12,6 +12,7 @@ services:
     command: "python manage.py runserver 0.0.0.0:8000"
 
   # Production server.
+  # For demo purposes. Don't use this in production for real.
   prod:
     build: .
     volumes:
