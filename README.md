@@ -27,6 +27,6 @@ Then visit
  - <http://localhost:8000/naive/numbers> - JSON response done naively.
  - <http://localhost:8000/naive/numbers/28>
  - <http://localhost:8000/numbers/> - API with properly defined entities.
- - <http://localhost:8000/numbers/28/ >
+ - <http://localhost:8000/numbers/28/>
  - <http://localhost:8000/docs/> - Auto generated Docs.
 
