@@ -1,0 +1,24 @@
+version: '2'
+services:
+
+  # Development server.
+  dev:
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    working_dir: /code
+    command: "python manage.py runserver 0.0.0.0:8000"
+
+  # Production server.
+  prod:
+    build: .
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    working_dir: /code
+    command: gunicorn demoproject.wsgi:application --bind 0.0.0.0:8000 --workers 3
+
+
