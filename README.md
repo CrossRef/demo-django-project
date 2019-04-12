@@ -8,15 +8,14 @@ Quick demo project to show Django.
 - Django REST API based response.
 - Swagger schema
 
-To test:
 
-    `docker-compose run --service-ports dev /code/manage.py test`
-
-To run:
+First time, and if you change dependencies or Dockerfile:
 
     `docker-compose build`
 
-(Run this again if you change your dependencies or Dockerfile)
+To test:
+
+    `docker-compose run dev /code/manage.py test`
 
 To run development:
 
