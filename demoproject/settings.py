@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 
 import os
 
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -111,3 +112,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = "/static/"
+
+# Export prometheus /metrics in an HTTPServer running in a daemon thread
+# NB- problem is this is that it doesn't work with autoload, so a PITA.
+# PROMETHEUS_METRICS_EXPORT_PORT_RANGE = range(8001, 8050)

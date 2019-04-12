@@ -13,6 +13,10 @@ RUN pip install gunicorn
 COPY . /code/
 WORKDIR /code/
 
+# Setup directory for prometheus metrics
+RUN rm -rf /tmp/multiproc-tmp && mkdir /tmp/multiproc-tmp
+ENV prometheus_multiproc_dir=/tmp/multiproc-tmp
+
 EXPOSE 8000
 
 # default run, can be overridden in docker compose.
