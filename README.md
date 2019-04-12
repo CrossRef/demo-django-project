@@ -10,7 +10,7 @@ Quick demo project to show Django.
 
 To test:
 
-    `./manage.py test`
+    `docker-compose run --service-ports dev /code/manage.py test`
 
 To run:
 
