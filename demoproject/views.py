@@ -15,8 +15,6 @@ from prometheus_client import (
 from .critter import Critter
 
 
-# CRITTER_LOAD = Gauge("critter_load", "Current critter load")
-
 # This would be served from a database normally.
 # However, as we probably won't use one, this demo shows in-memory data.
 NUMBERS = {
