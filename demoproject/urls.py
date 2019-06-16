@@ -6,6 +6,7 @@ from . import views
 
 urlpatterns = [
     path("", views.home, name="home"),
+    path("critter", views.critter, name="critter"),
     # Naive...
     path("naive/numbers", views.naive_numbers),
     path("naive/numbers/<int:num_id>", views.naive_number),
