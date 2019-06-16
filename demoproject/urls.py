@@ -6,6 +6,8 @@ from . import views
 
 urlpatterns = [
     path("", views.home, name="home"),
+    # critter is an example of exposing
+    # some custom metrics for prometheus
     path("critter", views.critter, name="critter"),
     # Naive...
     path("naive/numbers", views.naive_numbers),
@@ -14,5 +16,11 @@ urlpatterns = [
     url(r"^", include(views.numbers_router.urls)),
     url(r"^docs/", include_docs_urls(title="My Catalogue of Numbers")),
     # Prometheus
-    url("", include("django_prometheus.urls")),
+    # If you were using django/prometeus default behavior,
+    # you would just uncomment line below.
+    # url("", include("django_prometheus.urls")),
+    # But... we want to handle the metrics route ourselves
+    # so that we can also trigger some admin tasks, so we
+    # do this instead
+    path("metrics", views.override_metrics, name="override_metrics"),
 ]

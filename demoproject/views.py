@@ -1,3 +1,4 @@
+from random import randint
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.http import JsonResponse
@@ -5,7 +6,16 @@ from django.http import Http404
 from rest_framework import serializers, viewsets, routers
 from rest_framework.renderers import JSONRenderer
 from rest_framework.response import Response
+from prometheus_client import (
+    multiprocess,
+    generate_latest,
+    CollectorRegistry,
+    CONTENT_TYPE_LATEST,
+)
 from .critter import Critter
+
+
+# CRITTER_LOAD = Gauge("critter_load", "Current critter load")
 
 # This would be served from a database normally.
 # However, as we probably won't use one, this demo shows in-memory data.
@@ -28,8 +38,16 @@ def home(request):
 def critter(request):
     c = Critter()
     c.activate()
-    c.purr()
     return HttpResponse("Critter activated!", status=200)
+
+
+def override_metrics(request):
+    c = Critter()
+    c.update_critter_mood()
+    registry = CollectorRegistry()
+    multiprocess.MultiProcessCollector(registry)
+    data = generate_latest(registry)
+    return HttpResponse(data, status=200, content_type=CONTENT_TYPE_LATEST)
 
 
 # Naive JSON API
