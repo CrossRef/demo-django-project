@@ -10,7 +10,7 @@ coreschema==0.0.4
 Django==2.2
 django-filter==2.1.0
 django-prometheus==1.0.15
-djangorestframework==3.9.2
+djangorestframework==3.11.2
 gunicorn==19.9.0
 idna==2.8
 isort==4.3.17
